@@ -48,12 +48,12 @@ public class FormLaporanController {
     }
 
 
-    @DeleteMapping("/rundownevent/delete/{id}")
-    public String deleteFormLaporan(@PathVariable int id) {
-        if(formLaporanService.deleteFormLaporan(id)) {
-            return "Success delete Rundown Event with id "+id;
-        }else {
-            return "Rundown Event with id "+id+" not found";
-        }
-    }
+//    @DeleteMapping("/rundownevent/delete/{laporanId}")
+//    public String deleteFormLaporan(@PathVariable int laporanId) {
+//        if(formLaporanService.deleteFormLaporan(laporanId)) {
+//            return "Success delete Laporan with id "+laporanId;
+//        }else {
+//            return "Laporan with id "+laporanId+" not found";
+//        }
+//    }
 }

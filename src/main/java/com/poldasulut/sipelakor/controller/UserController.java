@@ -5,8 +5,13 @@ import com.poldasulut.sipelakor.model.UserModel;
 import com.poldasulut.sipelakor.model.nofk.UserModels;
 import com.poldasulut.sipelakor.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ResourceNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -38,9 +43,9 @@ public class UserController {
         return userService.getUserByNik(nikUser);
     }
 
-    @GetMapping("/person/{userId}")
-    public Optional<UserModel> getUserByUserId (@PathVariable int userId){
-        return userService.getUserById(userId);
+    @GetMapping("/person/{id}")
+    public UserModel getUserByUserId (@PathVariable int id){
+        return userService.getUserById(id).get();
     }
     @GetMapping("/login")
     public GetUserModel login(@RequestParam String nikUser, @RequestParam String password) {
@@ -58,12 +63,8 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/person/delete/{id}")
-    public String deleteFormUser(@PathVariable int id) {
-        if(userService.deleteUser(id)) {
-            return "Success delete Rundown Event with id "+id;
-        }else {
-            return "Rundown Event with id "+id+" not found";
-        }
-    }
+//    @DeleteMapping("/person/delete/{id}")
+//    public Map<String, Boolean> deleteUser(
+//            @PathVariable(value = "id") int id) throws Exception {
+//    }
 }

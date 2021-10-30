@@ -124,10 +124,10 @@ public class FormLaporanService {
         return formLaporanRepository.findById(laporanId);
     }
 
-    public boolean deleteFormLaporan(int id) {
+    public boolean deleteFormLaporan(int laporanId) {
         Optional<FormLaporanModel> formLaporanModel = Optional.empty();
         if(formLaporanModel.isPresent()) {
-            formLaporanRepository.deleteById(id);
+            formLaporanRepository.deleteById(laporanId);
             return true;
         }else {
             return false;

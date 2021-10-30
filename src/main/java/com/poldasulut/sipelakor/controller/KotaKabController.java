@@ -12,7 +12,7 @@ public class KotaKabController {
     @Autowired
     private KotaKabService kotaKabService;
 
-    @GetMapping
+    @GetMapping("kotakab/all")
     public Iterable<KotaKabupatenModel> getAllKotaKab(){
         return kotaKabService.getAllKotaKab();
     }
