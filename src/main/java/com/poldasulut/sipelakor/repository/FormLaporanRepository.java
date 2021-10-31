@@ -14,4 +14,6 @@ public interface FormLaporanRepository extends JpaRepository<FormLaporanModel,In
     List<FormLaporanModel> getAllByFkUserIdUserId(int userId);
 
     List<FormLaporanModel> findAllByFkUserId(int userId);
+
+    List<FormLaporanModel> findAllByFkUserIdUserId(int userId);
 }
