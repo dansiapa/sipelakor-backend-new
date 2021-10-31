@@ -1,17 +1,17 @@
 package com.poldasulut.sipelakor.service;
 
-import com.poldasulut.sipelakor.model.FormLaporanModel;
 import com.poldasulut.sipelakor.model.UserModel;
 import com.poldasulut.sipelakor.model.nofk.UserModels;
 import com.poldasulut.sipelakor.repository.UserRepositories;
 import com.poldasulut.sipelakor.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -102,15 +102,15 @@ public class UserService {
         return userRepositories.findById(id);
     }
 
-//    public boolean deleteUser(int userId) {
-//        Optional<UserModel> userModel = Optional.empty();
-//        if(userModel.isPresent()) {
-//            userRepository.deleteById(userId);
-//            return true;
-//        }else {
-//            return false;
-//        }
-//    }
+    public boolean deleteUser(int userId) {
+        Optional<UserModel> userModel = Optional.empty();
+        if(userModel.isPresent()) {
+            userRepository.deleteById(userId);
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     public Optional<UserModel> findById(int id) {
         return userRepositories.findById(id);

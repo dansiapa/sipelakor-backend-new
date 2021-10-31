@@ -5,15 +5,9 @@ import com.poldasulut.sipelakor.model.UserModel;
 import com.poldasulut.sipelakor.model.nofk.UserModels;
 import com.poldasulut.sipelakor.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ResourceNotFoundException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -66,5 +60,11 @@ public class UserController {
 //    @DeleteMapping("/person/delete/{id}")
 //    public Map<String, Boolean> deleteUser(
 //            @PathVariable(value = "id") int id) throws Exception {
-//    }
+//        UserModel user = userService.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("User not found on :: "+ userId));
+//
+//        userService.delete(user);
+//        Map<String, Boolean> response = new HashMap<>();
+//        response.put("deleted", Boolean.TRUE);
+//        return response;
 }
