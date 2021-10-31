@@ -6,6 +6,7 @@ import com.poldasulut.sipelakor.model.nofk.FormLaporan;
 import com.poldasulut.sipelakor.service.FormLaporanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Objects;
@@ -56,4 +57,10 @@ public class FormLaporanController {
 //            return "Laporan with id "+laporanId+" not found";
 //        }
 //    }
+
+    @PostMapping("/upload")
+    public boolean singleFileUpload(@RequestParam("file") MultipartFile file,
+                                   @RequestParam int laporanId) {
+        return formLaporanService.saveFile(file,laporanId);
+    }
 }
