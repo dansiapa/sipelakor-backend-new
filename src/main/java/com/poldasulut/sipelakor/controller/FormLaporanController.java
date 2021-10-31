@@ -41,7 +41,7 @@ public class FormLaporanController {
         }
     }
 
-    @GetMapping("/laporan/user={userId}")
+    @GetMapping("/laporan&&user={userId}")
     public List<FormLaporan> getLaporan(@PathVariable int userId){
         return formLaporanService.getByUserId(userId);
     }
