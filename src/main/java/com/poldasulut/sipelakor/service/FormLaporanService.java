@@ -115,10 +115,6 @@ public class FormLaporanService {
         return formLaporanRepositories.save(formInvitation);
     }
 
-    public List<FormLaporan> getByUserId(int userId) {
-        return formLaporanRepositories.getAllByFkUserIdUserId(userId);
-    }
-
     public Optional<FormLaporanModel> getByLaporanId(int id) {
         return formLaporanRepository.findById(id);
     }
@@ -131,5 +127,9 @@ public class FormLaporanService {
         }else {
             return false;
         }
+    }
+
+    public List<FormLaporanModel> getFormLaporanByUserId(int userId){
+        return formLaporanRepository.findAllByFkUserIdUserId(userId);
     }
 }
