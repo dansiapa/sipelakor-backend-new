@@ -40,9 +40,9 @@ public class UserController {
         return userService.getUserByNik(nikUser);
     }
 
-    @GetMapping("/person={id}")
-    public Optional<UserModel> getUserByUserId (@PathVariable int id){
-        return userService.getUserById(id);
+    @GetMapping("/person={userId}")
+    public Optional<UserModel> getUserByUserId (@PathVariable int userId){
+        return userService.getUserById(userId);
     }
     @GetMapping("/login")
     public GetLoginResponse login(@RequestParam String nikUser, @RequestParam String password) {

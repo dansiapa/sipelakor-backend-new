@@ -100,8 +100,8 @@ public class UserService {
 
 
 
-    public Optional<UserModel> getUserById(int id) {
-        return userRepositories.findById(id);
+    public Optional<UserModel> getUserById(int userId) {
+        return userRepositories.findById(userId);
     }
 
     public boolean deleteUser(int userId) {
