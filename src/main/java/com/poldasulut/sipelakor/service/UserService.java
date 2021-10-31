@@ -1,5 +1,6 @@
 package com.poldasulut.sipelakor.service;
 
+import com.poldasulut.sipelakor.model.KotaKabupatenModel;
 import com.poldasulut.sipelakor.model.UserModel;
 import com.poldasulut.sipelakor.model.nofk.UserModels;
 import com.poldasulut.sipelakor.repository.UserRepositories;
@@ -25,15 +26,15 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public UserModels createUser(int kotaKabupaten, String nik, String username, String jobs, String address,
-                                 String nomor, String email, String password, int status,
-                                 String tanggalLahir) {
-        UserModels userModelNew = new UserModels();
+    public UserModel createUser(KotaKabupatenModel kotaKabupaten, String nik, String username, String jobs, String address,
+                                String nomor, String email, String password, int status,
+                                String tanggalLahir) {
+        UserModel userModelNew = new UserModel();
 
         if(Objects.nonNull(userRepository.findAllByNikUser(nik))) {
             return null;
         }else {
-            userModelNew.setKotaKabupatenId(kotaKabupaten);
+            userModelNew.setFkKotaKabId(kotaKabupaten);
             userModelNew.setNikUser(nik);
             userModelNew.setUserName(username);
             userModelNew.setJobs(jobs);
@@ -44,7 +45,7 @@ public class UserService {
             userModelNew.setUserStatus(status);
             userModelNew.setTanggalLahir(tanggalLahir);
         }
-        return userRepository.save(userModelNew);
+        return userRepositories.save(userModelNew);
     }
 
 
@@ -99,8 +100,8 @@ public class UserService {
 
 
 
-    public Optional<UserModel> getUserById(int id) {
-        return userRepositories.findById(id);
+    public Optional<UserModels> getUserById(int id) {
+        return userRepository.findById(id);
     }
 
     public boolean deleteUser(int userId) {
