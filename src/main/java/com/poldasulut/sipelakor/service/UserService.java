@@ -98,6 +98,7 @@ public class UserService {
     }
 
 
+
     public Optional<UserModel> getUserById(int id) {
         return userRepositories.findById(id);
     }
