@@ -13,7 +13,7 @@ public interface FormLaporanRepositories extends JpaRepository<FormLaporan,Integ
 
     List<FormLaporan> findAllByUserId(int userId);
 
-    @Query(value = "SELECT * FROM form_laporan l INNER JOIN user u WHERE l.id_user = u.id_user AND l.id_user = :userId",
+    @Query(value = "SELECT * FROM form_laporan l WHERE l.id_user = :userId",
             nativeQuery = true)
     List<FormLaporan> getAllByFkUserIdUserId(int userId);
 }

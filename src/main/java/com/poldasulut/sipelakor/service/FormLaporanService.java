@@ -115,8 +115,8 @@ public class FormLaporanService {
         return formLaporanRepositories.save(formInvitation);
     }
 
-    public List<FormLaporanModel> getByUserId(int userId) {
-        return formLaporanRepository.findAllByFkUserIdUserId(userId);
+    public List<FormLaporan> getByUserId(int userId) {
+        return formLaporanRepositories.getAllByFkUserIdUserId(userId);
     }
 
     public Optional<FormLaporanModel> getByLaporanId(int id) {

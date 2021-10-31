@@ -42,7 +42,7 @@ public class FormLaporanController {
     }
 
     @GetMapping("/laporan&&user={userId}")
-    public List<FormLaporanModel> getLaporan(@PathVariable int userId){
+    public List<FormLaporan> getLaporan(@PathVariable int userId){
         return formLaporanService.getByUserId(userId);
     }
 
@@ -60,6 +60,7 @@ public class FormLaporanController {
 //            return "Laporan with id "+laporanId+" not found";
 //        }
 //    }
+
 
     @PostMapping("/upload")
     public boolean singleFileUpload(@RequestParam("file") MultipartFile file,
