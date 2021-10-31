@@ -19,16 +19,18 @@ public class FormLaporanController {
     @Autowired
     private FormLaporanService formLaporanService;
 
-    @PostMapping("/create_laporan")
+    @PostMapping("/createlaporan")
     public GetFormResponse createLaporan(@RequestParam int user, @RequestParam String tanggalKejadian,
-                                         @RequestParam String lokasi, @RequestParam String dokument1, @RequestParam String dokument2,
-                                         @RequestParam String dokument3, @RequestParam String ktp,
-                                         @RequestParam String kta, @RequestParam String detail, @RequestParam String statusLaporan,
-                                         @RequestParam String statusPelapor) {
+                                         @RequestParam String lokasi, @RequestParam String dokument1,
+                                         @RequestParam String dokument2, @RequestParam String dokument3,
+                                         @RequestParam String statusPelapor, @RequestParam String ktp,
+                                         @RequestParam String kta, @RequestParam String detail,
+                                         @RequestParam String statusLaporan
+                                         ) {
         GetFormResponse getFormResponse = new GetFormResponse();
         FormLaporan formLaporanModelNew = formLaporanService.createFormInvitation(user,
-                tanggalKejadian, lokasi, dokument1, dokument2, dokument3, ktp,
-                kta, detail, statusLaporan, statusPelapor);
+                tanggalKejadian, lokasi, dokument1, dokument2, dokument3,statusPelapor, ktp,
+                kta, detail, statusLaporan);
         if (Objects.nonNull(formLaporanModelNew)) {
             getFormResponse.setStatus("success");
             getFormResponse.setFormLaporan(formLaporanModelNew);
