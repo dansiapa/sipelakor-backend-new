@@ -38,14 +38,14 @@ public class FormLaporanController {
         }
     }
 
-    @GetMapping("/statuslaporan/{userId}")
-    public List<FormLaporanModel> getLaporan(@PathVariable int userId){
+    @GetMapping("/laporan/user={userId}")
+    public List<FormLaporan> getLaporan(@PathVariable int userId){
         return formLaporanService.getByUserId(userId);
     }
 
-    @GetMapping("/laporan/{laporanId}")
-    public Optional<FormLaporanModel> getLaporanById(@PathVariable int laporanId){
-        return formLaporanService.getByLaporanId(laporanId);
+    @GetMapping("/laporan={id}")
+    public Optional<FormLaporanModel> getLaporanById(@PathVariable int id){
+        return formLaporanService.getByLaporanId(id);
     }
 
 

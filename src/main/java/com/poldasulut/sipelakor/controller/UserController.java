@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -37,9 +38,9 @@ public class UserController {
         return userService.getUserByNik(nikUser);
     }
 
-    @GetMapping("/person/{id}")
-    public UserModel getUserByUserId (@PathVariable int id){
-        return userService.getUserById(id).get();
+    @GetMapping("/person={id}")
+    public Optional<UserModel> getUserByUserId (@PathVariable int id){
+        return userService.getUserById(id);
     }
     @GetMapping("/login")
     public GetUserModel login(@RequestParam String nikUser, @RequestParam String password) {

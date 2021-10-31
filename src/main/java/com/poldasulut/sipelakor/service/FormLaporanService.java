@@ -116,12 +116,12 @@ public class FormLaporanService {
         return formLaporanRepositories.save(formInvitation);
     }
 
-    public List<FormLaporanModel> getByUserId(int userId) {
-        return formLaporanRepository.findAllByUserId(userId);
+    public List<FormLaporan> getByUserId(int userId) {
+        return formLaporanRepositories.findAllByUserId(userId);
     }
 
-    public Optional<FormLaporanModel> getByLaporanId(int laporanId) {
-        return formLaporanRepository.findById(laporanId);
+    public Optional<FormLaporanModel> getByLaporanId(int id) {
+        return formLaporanRepository.findById(id);
     }
 
     public boolean deleteFormLaporan(int laporanId) {

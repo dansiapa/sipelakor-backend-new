@@ -19,7 +19,7 @@ public class FormLaporanModel {
     private int laporanId;
     @ManyToOne
     @JoinColumn(name = "id_user")
-    private UserModel userId;
+    private UserModel fkUserId;
     @Column(name = "tanggal_kejadian")
     private String tanggalKejadian;
     @Column(name = "lokasi_kejadian")
@@ -55,11 +55,11 @@ public class FormLaporanModel {
     }
 
     public UserModel getUserId() {
-        return userId;
+        return fkUserId;
     }
 
-    public void setUserId(UserModel userId) {
-        this.userId = userId;
+    public void setUserId(UserModel fkUserId) {
+        this.fkUserId = fkUserId;
     }
 
     public String getTanggalKejadian() {
