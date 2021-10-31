@@ -20,13 +20,13 @@ public class FormLaporanController {
     private FormLaporanService formLaporanService;
 
     @PostMapping("/create_laporan")
-    public GetFormResponse createLaporan(@RequestParam UserModel user, @RequestParam String tanggalKejadian,
+    public GetFormResponse createLaporan(@RequestParam int user, @RequestParam String tanggalKejadian,
                                          @RequestParam String lokasi, @RequestParam String dokument1, @RequestParam String dokument2,
                                          @RequestParam String dokument3, @RequestParam String ktp,
                                          @RequestParam String kta, @RequestParam String detail, @RequestParam String statusLaporan,
                                          @RequestParam String statusPelapor) {
         GetFormResponse getFormResponse = new GetFormResponse();
-        FormLaporanModel formLaporanModelNew = formLaporanService.createFormInvitation(user,
+        FormLaporan formLaporanModelNew = formLaporanService.createFormInvitation(user,
                 tanggalKejadian, lokasi, dokument1, dokument2, dokument3, ktp,
                 kta, detail, statusLaporan, statusPelapor);
         if (Objects.nonNull(formLaporanModelNew)) {

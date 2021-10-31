@@ -92,11 +92,11 @@ public class FormLaporanService {
         }
     }
 
-    public FormLaporanModel createFormInvitation(UserModel user, String tanggalKejadian, String lokasi,
+    public FormLaporan createFormInvitation(int user, String tanggalKejadian, String lokasi,
                                                  String dokument1, String dokument2, String dokument3, String ktp,
                                                  String kta, String detail, String statusLaporan,
                                                  String statusPelapor) {
-        FormLaporanModel formInvitation = new FormLaporanModel();
+        FormLaporan formInvitation = new FormLaporan();
 
         if(Objects.nonNull(formLaporanRepositories.getFormLaporanModelNewByTanggalKejadian(tanggalKejadian))) {
             return null;
@@ -114,7 +114,7 @@ public class FormLaporanService {
             formInvitation.setStatusPelapor(statusPelapor);
             formInvitation.setCreatedAt(LocalDateTime.now());
         }
-        return formLaporanRepository.save(formInvitation);
+        return formLaporanRepositories.save(formInvitation);
     }
 
     public List<FormLaporanModel> getByUserId(int userId) {

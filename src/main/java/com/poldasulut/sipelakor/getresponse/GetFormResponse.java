@@ -5,7 +5,7 @@ import com.poldasulut.sipelakor.model.nofk.FormLaporan;
 
 public class GetFormResponse {
     private String status;
-    private FormLaporanModel formLaporan;
+    private FormLaporan formLaporan;
 
     public String getStatus() {
         return status;
@@ -15,11 +15,11 @@ public class GetFormResponse {
         this.status = status;
     }
 
-    public FormLaporanModel getFormLaporan() {
+    public FormLaporan getFormLaporan() {
         return formLaporan;
     }
 
-    public void setFormLaporan(FormLaporanModel formLaporan) {
+    public void setFormLaporan(FormLaporan formLaporan) {
         this.formLaporan = formLaporan;
     }
 }
