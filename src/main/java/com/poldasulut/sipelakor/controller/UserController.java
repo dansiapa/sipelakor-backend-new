@@ -1,12 +1,12 @@
 package com.poldasulut.sipelakor.controller;
 
 import com.poldasulut.sipelakor.getresponse.GetLoginResponse;
-import com.poldasulut.sipelakor.getresponse.GetUserModel;
 import com.poldasulut.sipelakor.model.KotaKabupatenModel;
 import com.poldasulut.sipelakor.model.UserModel;
 import com.poldasulut.sipelakor.model.nofk.UserModels;
 import com.poldasulut.sipelakor.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
@@ -58,6 +58,11 @@ public class UserController {
             getLoginResponse.setStatus("failed");
             return getLoginResponse;
         }
+    }
+
+    @PutMapping("/update/user={id}")
+    public ResponseEntity<UserModels> updateData(@PathVariable("id") int id, @RequestBody UserModels uModel) {
+        return userService.updateData(id, uModel);
     }
 
 //    @DeleteMapping("/person/delete/{id}")
