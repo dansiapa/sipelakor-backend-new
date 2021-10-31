@@ -9,7 +9,9 @@ import java.util.Optional;
 
 public interface FormLaporanRepository extends JpaRepository<FormLaporanModel,Integer> {
 
-    List<FormLaporanModel> findAllByFkUserIdUserId(int userId);
+    @Query(value = "SELECT * FROM form_laporan l INNER JOIN user u WHERE l.id_user = u.id_user AND l.id_user = :userId",
+    nativeQuery = true)
+    List<FormLaporanModel> getAllByFkUserIdUserId(int userId);
 
     List<FormLaporanModel> findAllByFkUserId(int userId);
 }

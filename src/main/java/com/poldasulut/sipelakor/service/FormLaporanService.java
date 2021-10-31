@@ -1,7 +1,6 @@
 package com.poldasulut.sipelakor.service;
 
 import com.poldasulut.sipelakor.model.FormLaporanModel;
-import com.poldasulut.sipelakor.model.UserModel;
 import com.poldasulut.sipelakor.model.nofk.FormLaporan;
 import com.poldasulut.sipelakor.repository.FormLaporanRepositories;
 import com.poldasulut.sipelakor.repository.FormLaporanRepository;
@@ -117,7 +116,7 @@ public class FormLaporanService {
     }
 
     public List<FormLaporanModel> getByUserId(int userId) {
-        return formLaporanRepository.findAllByFkUserIdUserId(userId);
+        return formLaporanRepository.getAllByFkUserIdUserId(userId);
     }
 
     public Optional<FormLaporanModel> getByLaporanId(int id) {
