@@ -34,7 +34,7 @@ public class FormLaporanService {
     }
 
 
-    private final Path dokumentPendukung = Paths.get("./assets/photo");
+    private final Path dokumentPendukung = Paths.get("../assets/photo");
     public boolean saveFile(MultipartFile file) {
         try {
             if (!Files.exists(dokumentPendukung)) {

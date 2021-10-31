@@ -60,8 +60,8 @@ public class UserService {
         return userRepositories.findAllByUserEmail(userEmail);
     }
 
-    public UserModels getUserByNik(String nikUser) {
-        return userRepository.findAllByNikUser(nikUser);
+    public UserModel getUserByNik(String nikUser) {
+        return userRepositories.findAllByNikUser(nikUser);
     }
     public boolean login(String nikUser, String password) {
         UserModel userModel = userRepositories.findAllByNikUser(nikUser);

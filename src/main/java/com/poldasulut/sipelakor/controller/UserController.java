@@ -1,5 +1,6 @@
 package com.poldasulut.sipelakor.controller;
 
+import com.poldasulut.sipelakor.getresponse.GetLoginResponse;
 import com.poldasulut.sipelakor.getresponse.GetUserModel;
 import com.poldasulut.sipelakor.model.UserModel;
 import com.poldasulut.sipelakor.model.nofk.UserModels;
@@ -34,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("/person/{nikUser}")
-    public UserModels getUserByNikUser(@PathVariable String nikUser) {
+    public UserModel getUserByNikUser(@PathVariable String nikUser) {
         return userService.getUserByNik(nikUser);
     }
 
@@ -43,18 +44,18 @@ public class UserController {
         return userService.getUserById(id);
     }
     @GetMapping("/login")
-    public GetUserModel login(@RequestParam String nikUser, @RequestParam String password) {
-        GetUserModel getUserModel = new GetUserModel();
-        UserModels userModel = new UserModels();
+    public GetLoginResponse login(@RequestParam String nikUser, @RequestParam String password) {
+        GetLoginResponse getLoginResponse = new GetLoginResponse();
+        UserModel userModel = new UserModel();
 
         if(userService.login(nikUser, password)) {
-            getUserModel.setStatus("success");
-            getUserModel.setUserModel(getUserByNikUser(nikUser));
-            getUserModel.setUserId(userModel.getUserId());
-            return getUserModel;
+            getLoginResponse.setStatus("success");
+            getLoginResponse.setUserModel(getUserByNikUser(nikUser));
+            getLoginResponse.setUserId(userModel.getUserId());
+            return getLoginResponse;
         } else {
-            getUserModel.setStatus("failed");
-            return getUserModel;
+            getLoginResponse.setStatus("failed");
+            return getLoginResponse;
         }
     }
 
