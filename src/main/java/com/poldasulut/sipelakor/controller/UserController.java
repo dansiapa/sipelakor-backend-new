@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @GetMapping("/person={id}")
-    public Optional<UserModels> getUserByUserId (@PathVariable int id){
+    public Optional<UserModel> getUserByUserId (@PathVariable int id){
         return userService.getUserById(id);
     }
     @GetMapping("/login")

@@ -2,6 +2,7 @@ package com.poldasulut.sipelakor.controller;
 
 import com.poldasulut.sipelakor.getresponse.GetFormResponse;
 import com.poldasulut.sipelakor.model.FormLaporanModel;
+import com.poldasulut.sipelakor.model.UserModel;
 import com.poldasulut.sipelakor.model.nofk.FormLaporan;
 import com.poldasulut.sipelakor.service.FormLaporanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,13 @@ public class FormLaporanController {
     private FormLaporanService formLaporanService;
 
     @PostMapping("/create_laporan")
-    public GetFormResponse createLaporan(@RequestParam int user, @RequestParam String tanggalKejadian,
+    public GetFormResponse createLaporan(@RequestParam UserModel user, @RequestParam String tanggalKejadian,
                                          @RequestParam String lokasi, @RequestParam String dokument1, @RequestParam String dokument2,
                                          @RequestParam String dokument3, @RequestParam String ktp,
                                          @RequestParam String kta, @RequestParam String detail, @RequestParam String statusLaporan,
                                          @RequestParam String statusPelapor) {
         GetFormResponse getFormResponse = new GetFormResponse();
-        FormLaporan formLaporanModelNew = formLaporanService.createFormInvitation(user,
+        FormLaporanModel formLaporanModelNew = formLaporanService.createFormInvitation(user,
                 tanggalKejadian, lokasi, dokument1, dokument2, dokument3, ktp,
                 kta, detail, statusLaporan, statusPelapor);
         if (Objects.nonNull(formLaporanModelNew)) {
@@ -39,7 +40,7 @@ public class FormLaporanController {
     }
 
     @GetMapping("/laporan/user={userId}")
-    public List<FormLaporan> getLaporan(@PathVariable int userId){
+    public List<FormLaporanModel> getLaporan(@PathVariable int userId){
         return formLaporanService.getByUserId(userId);
     }
 

@@ -1,6 +1,7 @@
 package com.poldasulut.sipelakor.service;
 
 import com.poldasulut.sipelakor.model.FormLaporanModel;
+import com.poldasulut.sipelakor.model.UserModel;
 import com.poldasulut.sipelakor.model.nofk.FormLaporan;
 import com.poldasulut.sipelakor.repository.FormLaporanRepositories;
 import com.poldasulut.sipelakor.repository.FormLaporanRepository;
@@ -91,11 +92,11 @@ public class FormLaporanService {
         }
     }
 
-    public FormLaporan createFormInvitation(int user, String tanggalKejadian, String lokasi,
-                                            String dokument1, String dokument2, String dokument3, String ktp,
-                                            String kta, String detail, String statusLaporan,
-                                            String statusPelapor) {
-        FormLaporan formInvitation = new FormLaporan();
+    public FormLaporanModel createFormInvitation(UserModel user, String tanggalKejadian, String lokasi,
+                                                 String dokument1, String dokument2, String dokument3, String ktp,
+                                                 String kta, String detail, String statusLaporan,
+                                                 String statusPelapor) {
+        FormLaporanModel formInvitation = new FormLaporanModel();
 
         if(Objects.nonNull(formLaporanRepositories.getFormLaporanModelNewByTanggalKejadian(tanggalKejadian))) {
             return null;
@@ -113,11 +114,11 @@ public class FormLaporanService {
             formInvitation.setStatusPelapor(statusPelapor);
             formInvitation.setCreatedAt(LocalDateTime.now());
         }
-        return formLaporanRepositories.save(formInvitation);
+        return formLaporanRepository.save(formInvitation);
     }
 
-    public List<FormLaporan> getByUserId(int userId) {
-        return formLaporanRepositories.findAllByUserId(userId);
+    public List<FormLaporanModel> getByUserId(int userId) {
+        return formLaporanRepository.findAllByFkUserIdUserId(userId);
     }
 
     public Optional<FormLaporanModel> getByLaporanId(int id) {

@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface FormLaporanRepository extends JpaRepository<FormLaporanModel,Integer> {
 
     List<FormLaporanModel> findAllByFkUserIdUserId(int userId);
+
+    List<FormLaporanModel> findAllByFkUserId(int userId);
 }
