@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
 
-    private final Path root = Paths.get("/var/www/html/sipelakor-backend-new/uploads");
+    private final Path root = Paths.get("/var/www/html/SiPelakor/sipelakor-backend-new/uploads");
 
     @Override
     public void init() {
