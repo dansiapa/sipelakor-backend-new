@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface FormLaporanRepositories extends JpaRepository<FormLaporan,Integer> {
 
-    FormLaporan getFormLaporanModelNewByTanggalKejadian(String tanggalKejadian);
+    FormLaporan getFormLaporanModelNewByUserIdAndTanggalKejadian(int userId,String tanggalKejadian);
 
     List<FormLaporan> findAllByUserId(int userId);
 

@@ -96,7 +96,7 @@ public class FormLaporanService {
                                             String ktp, String kta, String detail, String statusLaporan ) {
         FormLaporan formInvitation = new FormLaporan();
 
-        if(Objects.nonNull(formLaporanRepositories.getFormLaporanModelNewByTanggalKejadian(tanggalKejadian))) {
+        if(Objects.nonNull(formLaporanRepositories.getFormLaporanModelNewByUserIdAndTanggalKejadian(user,tanggalKejadian))) {
             return null;
         }else {
             formInvitation.setUserId(user);

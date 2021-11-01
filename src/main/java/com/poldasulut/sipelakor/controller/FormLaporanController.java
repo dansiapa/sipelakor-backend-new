@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,6 +28,9 @@ public class FormLaporanController {
 
     @Autowired
     private FileStorageService storageService;
+
+//    @Autowired
+//    IFileSytemStorage fileSytemStorage;
 
     @PostMapping("/createlaporan")
     public GetFormResponse createLaporan(@RequestParam int user, @RequestParam String tanggalKejadian,
@@ -115,4 +119,39 @@ public class FormLaporanController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
+
+
+//    //SINGLE
+//    @PostMapping("/uploadfile")
+//    public ResponseEntity<FileResponse> uploadSingleFile (@RequestParam("file") MultipartFile file) {
+//        String upfile = fileSytemStorage.saveFile(file);
+//
+//        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+//                .path("/api/download/")
+//                .path(upfile)
+//                .toUriString();
+//
+//        return ResponseEntity.status(HttpStatus.OK).body(new FileResponse(upfile,fileDownloadUri,"File uploaded with success!"));
+//    }
+//
+//    //MULTIPLE
+//    @PostMapping("/uploadfiles")
+//    public ResponseEntity<List<FileResponse>> uploadMultipleFiles (@RequestParam("files") MultipartFile[] files) {
+//
+//        List<FileResponse> responses = Arrays
+//                .asList(files)
+//                .stream()
+//                .map(
+//                        file -> {
+//                            String upfile = fileSytemStorage.saveFile(file);
+//                            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+//                                    .path("/api/download/")
+//                                    .path(upfile)
+//                                    .toUriString();
+//                            return new FileResponse(upfile,fileDownloadUri,"File uploaded with success!");
+//                        }
+//                )
+//                .collect(Collectors.toList());
+//        return ResponseEntity.status(HttpStatus.OK).body(responses);
+//    }
 }
