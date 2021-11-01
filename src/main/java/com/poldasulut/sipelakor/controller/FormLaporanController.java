@@ -91,8 +91,8 @@ public class FormLaporanController {
             message = "Uploaded the files successfully: " + fileNames;
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
         } catch (Exception e) {
-            message = "Fail to upload files!"+e.toString();
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+            message = "Fail to upload files!!"+e.toString();
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message+e.toString()));
         }
     }
 
